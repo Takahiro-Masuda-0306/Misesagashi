@@ -1,0 +1,45 @@
+<div class="center jumbotron header-title mb-4">
+  <div class="text-center mb-5">
+    <h1>ミセサガシ</h1>
+  </div>
+    
+  <% if logged_in? %>
+  <div class="text-center mb-4">
+    <h5 class="search_icon">気になったお店を検索しよう！</h5>
+  </div>
+    
+  <div class="row">
+    <div class="col-sm-3 text-right">
+      <i class="fas fa-search"></i>
+    </div>
+    
+    <div class="col-sm-6">
+      <div class="search_field">
+        
+        <%= form_with(url: restaurants_path, scope: :search, local: true, method: :get) do |f| %>
+        
+        <div class="form-group">
+          <%= f.text_field :freeword_field, class:'form-control' %>
+        </div>
+          <%= f.submit '検索！', class: 'btn btn-block btn-primary' %>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+  
+  <% else %>
+  <%# 非ログイン時のトップページ %>
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <%= link_to '新規登録', new_user_path, class: 'btn btn-block btn-success mb-5' %>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-block btn-primary' %>
+    </div>
+  </div>
+  
+  <% end %>
+
+</div>
+  
+
+  

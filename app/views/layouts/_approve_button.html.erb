@@ -1,0 +1,16 @@
+<%# レストラン一覧表示の時に用いるお気に入りボタン %>
+<div class="approve-button">
+<% if current_user.approvings?(restaurant) %>
+  <%= form_with(model: current_user.favorites.find_by(restaurant_id: restaurant.id), local: true, method: :delete) do |f| %>
+    <%= hidden_field_tag :restaurant_id, restaurant.id %>
+    <%= f.submit 'お気に入り解除', class: 'btn btn-block btn-danger' %>
+  <% end %>
+  
+<% else %>
+  <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
+    <%= hidden_field_tag :restaurant_id, restaurant.id %>
+    <%= f.submit 'お気に入り登録', class: 'btn btn-block btn-success' %>
+  <% end %>
+
+<% end %>
+</div>

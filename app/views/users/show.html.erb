@@ -1,0 +1,40 @@
+<div class="text-center mb-5">
+  <h2>ユーザー情報</h2>
+</div>
+
+<div class="text-center">
+  <div class="row mb-5">
+    <div class="col-sm text-center"><img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt=""></div>
+  </div>
+  
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center">名前 : </div>
+    <div class="col-sm-3 text-center"><%= @user.name %></div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center">メールアドレス : </div>
+    <div class="col-sm-3 text-center"><%= @user.email %></div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center">生年月日 : </div>
+    <div class="col-sm-3 text-center"><%= @user.birth %></div>
+  </div>
+
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center">紹介文 : </div>
+    <div class="col-sm-3 text-center"><%= @user.contents %></div>
+  </div>
+</div>
+
+<div class="row mb-3">
+  <div class="col-sm-6 offset-sm-3">
+    <% if current_user.id == @user.id %>
+      <%= link_to '内容を編集する', edit_user_path, class: 'btn btn-block btn-success mb-4' %>
+      <%= link_to 'トップページに戻る', toppages_index_path, class: 'btn btn-block btn-primary mb-4' %>
+    <% else %>
+      <%= link_to 'トップページに戻る', toppages_index_path, class: 'btn btn-block btn-primary mb-4' %>
+    <% end %>
+  </div>
+</div>
