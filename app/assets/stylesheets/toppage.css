@@ -25,3 +25,10 @@
 .back-to-top:hover {
   opacity: 1;
 }
+
+.rest-list {
+  padding: 20px;
+  background-color: #ffdbc9;
+  border: solid 3px #ff773e;
+  margin-bottom: 10px;
+}

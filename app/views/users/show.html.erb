@@ -8,23 +8,33 @@
   </div>
   
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center">名前 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">名前 : </div>
     <div class="col-sm-3 text-center"><%= @user.name %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center">メールアドレス : </div>
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">メールアドレス : </div>
     <div class="col-sm-3 text-center"><%= @user.email %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center">生年月日 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">生年月日 : </div>
     <div class="col-sm-3 text-center"><%= @user.birth %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center">紹介文 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">紹介文 : </div>
     <div class="col-sm-3 text-center"><%= @user.contents %></div>
+  </div>
+  
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">お気に入りしている数 : </div>
+    <div class="col-sm-3 text-center"><%= count_approvings(@user) %></div>
+  </div>
+  
+  <div class="row mb-5">
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">いいね！している数 : </div>
+    <div class="col-sm-3 text-center"><%= count_followings(@user) %></div>
   </div>
 </div>
 

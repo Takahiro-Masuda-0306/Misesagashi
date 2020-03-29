@@ -1,0 +1,25 @@
+<% if users.any? %>
+  <ul class="list-unstyled">
+    <% users.each do |user| %>
+    <div class="row">
+      <div class="col-sm-3 offset-sm-4">
+        <li class="media">
+            <img class="mr-2 rounded" src="<%= gravatar_url(user, { size: 60 }) %>" alt="">
+          <div class="media-body">
+            <div>
+              <span style="font-weight: bold;"><%= user.name %></span>
+            </div>
+            <div>
+              <p class="mb-2"><%= user.contents %></p>
+            </div>
+          </div>
+        </li>
+      </div>
+      <div class="col-sm-3">
+        <p><%= link_to 'View profile', user_path(user), class: 'btn btn-success' %></p>
+      </div>
+    </div>
+    <% end %>
+  </ul>
+  <%= paginate users %>
+<% end %>

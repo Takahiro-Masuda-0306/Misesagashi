@@ -1,34 +1,38 @@
 <%#　レストラン一覧の表示 %>
-<div class="rest-list">
-  <div class="row mb-4">
+<div class="rest-index">
     <% restaurants.each do |restaurant| %>
-    
+  <div class="rest-list">
     <%# レストランの情報詳細 %>
-    <div class="col-sm-9">
-      <div class="row mb-4">
-        <div class="col-sm-5">
-          <div class="mb-2"><img class="rest-image" src="<%= restaurant.rest_image %>" alt="<%= restaurant.rest_id %>の画像"></img></div>
-        </div>
-        <div class="col-sm-7">
-          <div class="mb-2"><span class="rest-name">Name : <%= restaurant.rest_name %></span></div> 
-          <div class="mb-2"><span class="rest-place">Place : <%= restaurant.rest_place %></span></div>
-          <div class="mb-4"><span class="rest-phone">Tel : <%= restaurant.rest_phone %></span></div>  
-          <div class="mb-2"><span class="rest-contents">Contents : <%= restaurant.rest_contents %></span></div>
-        </div>
+    <div class="row mb-4">
+      <div class="col-sm-6 text-center">
+        <div class="mb-2 text-center"><img class="rest-image" src="<%= restaurant.rest_image %>" alt="<%= restaurant.rest_id %>の画像"></img></div>
+      </div>
+      <div class="col-sm-6">
+        <div class="mb-2"><span style="font-weight: bold;" class="rest-name"><%= restaurant.rest_name %></span></div> 
+        <div class="mb-2"><span class="rest-place"><%= restaurant.rest_place %></span></div>
+        <div class="mb-4"><span class="rest-phone"><%= restaurant.rest_phone %></span></div>  
+        <div class="mb-2"><span class="rest-contents"><%= restaurant.rest_contents %></span></div>
       </div>
     </div>
+      
     
     <%# レストランの詳細ページに移行するボタンとお気に入りボタン %>
-    <div class="col-sm-3">
+    <div class="col-sm-6 offset-sm-3">
       <div class="mb-4">
-        <div class="rest-pop mb-3"><%= count_approved(restaurant) %>人にお気に入りされています！</div>
         <span class="rest-image"><%= link_to '詳細を見る', restaurant.rest_url, class: 'btn btn-block btn-info mb-3' %></span>
-        <%= render 'layouts/approve_button', user: @user, restaurant: restaurant %>
+        <div class="rest-app mb-3 text-center">このお店は <%= count_approved(restaurant) %> 人にお気に入りされています！</div>
+        <%= render 'layouts/approve_button', restaurant: restaurant %>
+        <div class="rest-fol mb-3 text-center"><%= count_followers(restaurant) %> いいね！
+          <span>
+            <%= link_to 'このお店にいいね！したUser', followers_restaurant_path(restaurant), class: 'ml-2' %>
+          </span>
+        </div>
+        <%= render 'layouts/follow_button', restaurant: restaurant %>
       </div>
+    </div>
     </div>
     
     <% end %>
-  </div>
   
   <div class="text-center"><%= paginate restaurants %></div>
 </div>

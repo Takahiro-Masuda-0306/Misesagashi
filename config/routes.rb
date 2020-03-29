@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'likes/index'
+  get 'likes/create'
+  get 'likes/destroy'
   get 'favorites/create'
   get 'favorites/destroy'
   get 'users/show'
@@ -15,7 +18,11 @@ Rails.application.routes.draw do
   root to: 'toppages#index'
   resources :toppages, only: [:index, :show]
   
-  resources :restaurants, only: [:index]
+  resources :restaurants, only: [:index] do
+    member do 
+      get :followers
+    end
+  end
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -28,4 +35,6 @@ Rails.application.routes.draw do
   end
   
   resources :favorites, only: [:create, :destroy]
+  
+  resources :likes, only: [:create, :destroy]
 end

@@ -1,5 +1,5 @@
 <%# レストラン一覧表示の時に用いるお気に入りボタン %>
-<div class="approve-button">
+<div class="approve-button mb-3">
 <% if current_user.approvings?(restaurant) %>
   <%= form_with(model: current_user.favorites.find_by(restaurant_id: restaurant.id), local: true, method: :delete) do |f| %>
     <%= hidden_field_tag :restaurant_id, restaurant.id %>

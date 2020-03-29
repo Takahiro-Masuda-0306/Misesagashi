@@ -26,6 +26,11 @@ class RestaurantsController < ApplicationController
     @user = User.find_by(id: current_user.id)
   end
   
+  def followers 
+    restaurant = Restaurant.find(params[:id])
+    @followers = restaurant.followers.order(id: :desc).page(params[:page]).per(20)
+  end
+  
   
   private
   

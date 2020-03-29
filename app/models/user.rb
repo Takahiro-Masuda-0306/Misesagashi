@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :approvings, through: :favorites, source: :restaurant
   
+  has_many :likes
+  has_many :followings, through: :likes, source: :restaurant
+  
+  
   def approve(restaurant)
     self.favorites.find_or_create_by(restaurant_id: restaurant.id)
   end
@@ -21,4 +25,18 @@ class User < ApplicationRecord
   def approvings?(restaurant)
     self.approvings.include?(restaurant)
   end
+  
+  def follow(restaurant)
+    self.likes.find_or_create_by(restaurant_id: restaurant.id)
+  end
+  
+  def unfollow(restaurant)
+    following = self.likes.find_by(restaurant_id: restaurant.id)
+    following.destroy if following
+  end
+  
+  def followings?(restaurant)
+    self.followings.include?(restaurant)
+  end
+
 end

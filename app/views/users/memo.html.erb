@@ -1,9 +1,0 @@
-  def birthday_join
-    # {"user"=>{"birth"=>{"birth(1i)"=>"oo", "birth(2i)"=>"●●", "birth(3i)"=>"××"}}}の形式でデータを取得
-    date = params[:user][:birth]
-
-    # Date.new(oo,●●,××)を作成するためにDate型の変数を生成(to_iは10進数に変換するため)
-    Date.new(date["birth(1i)"].to_i,date["birth(2i)"].to_i,date["birth(3i)"].to_i)
-  end
-  
-   params[:user][:birth] = birthday_join

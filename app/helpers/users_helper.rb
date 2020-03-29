@@ -8,4 +8,8 @@ module UsersHelper
   def count_approvings(user) 
 		@count_approvings = user.approvings.count
 	end
+	
+	def count_followings(user)
+	  @count_followings = user.followings.count
+	end
 end
