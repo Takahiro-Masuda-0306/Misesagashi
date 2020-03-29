@@ -1,6 +1,6 @@
 <%#　レストラン一覧の表示 %>
 <div class="rest-list">
-  <div class="row">
+  <div class="row mb-4">
     <% restaurants.each do |restaurant| %>
     
     <%# レストランの情報詳細 %>
@@ -30,5 +30,5 @@
     <% end %>
   </div>
   
-  <%= paginate restaurants %>
+  <div class="text-center"><%= paginate restaurants %></div>
 </div>

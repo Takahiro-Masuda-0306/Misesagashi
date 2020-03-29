@@ -1,10 +1,10 @@
 class RestaurantsController < ApplicationController
   def index
     require 'net/http'
-    freeword = params[:search][:freeword_field].downcase
+    @freeword = params[:search][:freeword_field].downcase
     data = {
       "keyid": "e7130fc111ffa7df69ad952842a43749",
-      "freeword": freeword,
+      "freeword": @freeword,
       "hit_per_page": 50
     }
     query = data.to_query
