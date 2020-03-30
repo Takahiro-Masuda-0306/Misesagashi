@@ -24,7 +24,3 @@ $('.back-to-top').on('click', (e) => {
 
 // ページの途中でリロード（再読み込み）された場合でも、ボタンが表示されるようにする
 updateButton();
-
-$('.test').on('click', () => {
-  $('.test').text('hello!');
-});
