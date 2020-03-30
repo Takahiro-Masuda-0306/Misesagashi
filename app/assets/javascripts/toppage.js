@@ -1,5 +1,5 @@
 // ボタンの表示／非表示を切り替える関数
-var updateButton = function() {
+const updateButton = () => {
   if ($(window).scrollTop() >= 300) {
     // 300px以上スクロールされた
     // ボタンを表示
