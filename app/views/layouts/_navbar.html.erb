@@ -15,7 +15,7 @@
           <li class="nav-item"><a class="nav-link" href="<%= toppages_show_path %>">このサイトについて</a></li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu dropdown-menu-right">
               <%= link_to 'Profile', user_path(current_user), class: 'dropdown-item' %>
               <a class="dropdown-item" href="<%= approvings_user_path(current_user) %>">お気に入り一覧<span class="badge badge-secondary ml-2"><%= count_approvings(current_user) %></span></a>
               <%= link_to 'ログアウト', logout_path(current_user),method: :delete, class: 'dropdown-item' %>
