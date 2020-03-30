@@ -1,21 +1,15 @@
-<div class="center jumbotron header-title mb-4">
-  <div class="text-center mb-5">
-    <h1>ミセサガシ</h1>
+<div class="toppage">
+  <div class="text-center header-title mb-4">
+    <img class="header-logo" src="assets/title.png" alt="ミセサガシ"></img>
   </div>
     
   <% if logged_in? %>
   <div class="text-center mb-4">
-    <h5 class="search_icon">気になったお店を検索しよう！</h5>
+    <h5 class="search_icon">お店を検索してみよう！<span class="fas fa-search ml-2"></span></h5>
   </div>
-    
   <div class="row">
-    <div class="col-sm-3 text-right">
-      <i class="fas fa-search"></i>
-    </div>
-    
-    <div class="col-sm-6">
+    <div class="col-sm-6 offset-sm-3">
       <div class="search_field">
-        
         <%= form_with(url: restaurants_path, scope: :search, local: true, method: :get) do |f| %>
         
         <div class="form-group">
@@ -39,6 +33,7 @@
   
   <% end %>
 
+  
 </div>
   
 
