@@ -1,0 +1,61 @@
+<div class="text-center">
+  <h1>" <%= @restaurant.rest_name %> "のレビュー投稿ページ</h1>
+</div>
+
+<div class="review-form">
+  <%= form_with(model: @review, method: :post, local: true) do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4">
+      <% hidden_field_tag :restaurant_id, @restaurant.id %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4">
+      <%= f.label :review_title, 'タイトル' %>
+      <%= f.text_field :review_title, class: 'form-control' %> 
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4">
+      <%= f.label :score, '評価' %>
+      <%= f.hidden_field :score, id: :rest_rating %> 
+      <div id="star-rating"></div>
+      <script>
+        $('#star-rating').raty({
+          path: '/assets/',
+          click: function(score, e) {
+          $("#rest_rating").val(score)
+          }
+        });
+      </script>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4">
+      <%= f.label :review_contents, 'レビュー内容' %>
+      <%= f.text_field :review_contents, class: 'form-control', placeholder: 'レビュー内容を記述してください' %> 
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4">
+      <%= f.label :review_image, '画像', class: 'mb-2' %>
+      <div>
+        <%= f.file_field :review_image %> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6 mb-4 mt-2">
+      <%= f.submit 'レビューを投稿する', class: 'btn btn-block btn-success' %>
+    </div>
+  </div>
+  
+  <% end %>
+</div>

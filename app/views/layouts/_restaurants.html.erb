@@ -22,9 +22,9 @@
         <span class="rest-image"><%= link_to '詳細を見る', restaurant.rest_url, class: 'btn btn-block btn-info mb-3' %></span>
         <div class="rest-app mb-3 text-center">このお店は <%= count_approved(restaurant) %> 人にお気に入りされています！</div>
         <%= render 'layouts/approve_button', restaurant: restaurant %>
-        <div class="rest-fol mb-3 text-center"><%= count_followers(restaurant) %> いいね！
+        <div class="rest-fol mb-3 text-center"><%= count_reviewers(restaurant) %> レビュー
           <span>
-            <%= link_to 'このお店にいいね！したUser', followers_restaurant_path(restaurant), class: 'ml-2' %>
+            <%= link_to 'このお店にレビューしたUser', reviewers_restaurant_path(restaurant), class: 'ml-2' %>
           </span>
         </div>
         <%= render 'layouts/follow_button', restaurant: restaurant %>

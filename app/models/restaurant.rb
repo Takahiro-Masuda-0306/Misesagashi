@@ -3,5 +3,5 @@ class Restaurant < ApplicationRecord
   has_many :approved, through: :favorites, source: :user
   
   has_many :likes
-  has_many :followers, through: :likes, source: :user
+  has_many :reviewers, through: :likes, source: :user
 end

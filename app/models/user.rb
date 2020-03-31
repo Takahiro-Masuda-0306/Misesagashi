@@ -4,13 +4,14 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   validates :birth, presence: true
+  validates :contents, length: { maximum: 200 }
   has_secure_password
   
   has_many :favorites
   has_many :approvings, through: :favorites, source: :restaurant
   
   has_many :likes
-  has_many :followings, through: :likes, source: :restaurant
+  has_many :reviewings, through: :likes, source: :restaurant
   
   
   def approve(restaurant)
@@ -26,17 +27,17 @@ class User < ApplicationRecord
     self.approvings.include?(restaurant)
   end
   
-  def follow(restaurant)
-    self.likes.find_or_create_by(restaurant_id: restaurant.id)
+  def review(paramaters)
+    self.likes.find_or_create_by(paramaters)
   end
   
-  def unfollow(restaurant)
-    following = self.likes.find_by(restaurant_id: restaurant.id)
-    following.destroy if following
+  def unreview(restaurant)
+    reviewing = self.likes.find_by(restaurant_id: restaurant.id)
+    reviewing.destroy if reviewing
   end
   
-  def followings?(restaurant)
-    self.followings.include?(restaurant)
+  def reviewings?(restaurant)
+    self.reviewings.include?(restaurant)
   end
 
 end

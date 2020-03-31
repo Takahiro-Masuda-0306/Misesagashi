@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:index] do
     member do 
       get :followers
+      get :reviewers
     end
   end
   
@@ -31,10 +32,12 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
     member do
       get :approvings
+      get :reviewings
     end
   end
   
   resources :favorites, only: [:create, :destroy]
   
-  resources :likes, only: [:create, :destroy]
+  get 'review', to: 'likes#new'
+  resources :likes, only: [:create, :edit, :update, :destroy]
 end

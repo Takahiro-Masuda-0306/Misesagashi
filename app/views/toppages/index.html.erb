@@ -4,6 +4,19 @@
   </div>
     
   <% if logged_in? %>
+   
+  <%# カルーセルスライダー %>
+  <div class="row">
+    <div class="col-sm-6 offset-sm-3 mb-5">
+	    <ul class="slider">
+	      <li><%= image_tag asset_path('french.png') %></li>
+	      <li><%= image_tag asset_path('kominka.png') %></li>
+	      <li><%= image_tag asset_path('yatai.png') %></li>
+	    </ul>
+	  </div>
+  </div>
+
+  
   <div class="text-center mb-4">
     <h5 class="search_icon">お店を検索してみよう！<span class="fas fa-search ml-2"></span></h5>
   </div>

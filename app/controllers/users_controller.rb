@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :approvings]
+  before_action :correct_user, only: [:edit, :update, :approvings]
+  before_action :user_existing?, only: [:show, :edit, :update]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(20)
   end
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def new
@@ -49,6 +50,9 @@ class UsersController < ApplicationController
     @approvings = current_user.approvings.page(params[:page])
   end
   
+  def reviewings
+  end
+  
   private
   
   def user_params_create()
@@ -59,11 +63,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :birth, :contents)
   end
   
-  def correct_user
-    @user = User.find_by(id: params[:id])
-    unless current_user == @user
+  def user_existing?
+    unless @user
       redirect_to root_url
     end
   end
-
+  
 end

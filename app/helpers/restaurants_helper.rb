@@ -3,7 +3,7 @@ module RestaurantsHelper
     @count_approved = restaurant.approved.count
   end
   
-  def count_followers(restaurant)
-    @count_followers = restaurant.followers.count
+  def count_reviewers(restaurant)
+    @count_reviewers = restaurant.reviewers.count
   end
 end

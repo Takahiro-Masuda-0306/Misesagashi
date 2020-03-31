@@ -55,3 +55,7 @@ body {
 .toppage {
   padding-bottom: 100px;
 }
+
+.break-style {
+  word-break: break-all;
+}

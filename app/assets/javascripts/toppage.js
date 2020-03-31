@@ -24,3 +24,16 @@ $('.back-to-top').on('click', (e) => {
 
 // ページの途中でリロード（再読み込み）された場合でも、ボタンが表示されるようにする
 updateButton();
+
+// カルーセルスライダーの設定
+$(function() {
+  $('.slider').slick({
+    autoplay: true,
+    autoplaySpeed: 3000,
+    
+  });
+  
+  $('.slider li').on('mouseover', function() {
+    $('.slider').slick('goTo', $(this).index());
+  });
+});
