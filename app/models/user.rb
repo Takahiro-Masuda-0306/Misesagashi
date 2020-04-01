@@ -27,15 +27,6 @@ class User < ApplicationRecord
     self.approvings.include?(restaurant)
   end
   
-  def review(paramaters)
-    self.likes.find_or_create_by(paramaters)
-  end
-  
-  def unreview(restaurant)
-    reviewing = self.likes.find_by(restaurant_id: restaurant.id)
-    reviewing.destroy if reviewing
-  end
-  
   def reviewings?(restaurant)
     self.reviewings.include?(restaurant)
   end

@@ -29,12 +29,12 @@
   
   <div class="row mb-5">
     <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">お気に入りしている数 : </div>
-    <div class="col-sm-3 text-center"><%= count_approvings(@user) %></div>
+    <div class="col-sm-3 text-center"><%= count_approvings(@user) %>  <span><%= link_to 'お気に入り一覧を見る', approvings_user_path(@user) %></span></div>
   </div>
   
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">いいね！している数 : </div>
-    <div class="col-sm-3 text-center"><%= count_followings(@user) %></div>
+    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">レビューしている数 : </div>
+    <div class="col-sm-3 text-center"><%= count_reviewings(@user) %>  <span><%= link_to 'レビューを見る', reviewings_user_path(@user) %></span></div>
   </div>
 </div>
 
@@ -42,9 +42,9 @@
   <div class="col-sm-6 offset-sm-3">
     <% if current_user.id == @user.id %>
       <%= link_to '内容を編集する', edit_user_path, class: 'btn btn-block btn-success mb-4' %>
-      <%= link_to 'トップページに戻る', toppages_index_path, class: 'btn btn-block btn-primary mb-4' %>
+      <%= link_to '戻る', :back, class: 'btn btn-block btn-primary mb-4' %>
     <% else %>
-      <%= link_to 'トップページに戻る', toppages_index_path, class: 'btn btn-block btn-primary mb-4' %>
+      <%= link_to '戻る', :back, class: 'btn btn-block btn-primary mb-4' %>
     <% end %>
   </div>
 </div>

@@ -59,3 +59,13 @@ body {
 .break-style {
   word-break: break-all;
 }
+
+.review-image {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.review-list {
+  border: 2px solid #00ff00;
+  padding: 20px 0;
+}

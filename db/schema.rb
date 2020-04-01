@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_31_083606) do
+ActiveRecord::Schema.define(version: 2020_04_01_073037) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 2020_03_31_083606) do
     t.bigint "restaurant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "review_name"
     t.string "review_title"
     t.text "review_contents"
     t.string "review_image"
     t.float "score"
+    t.string "review_name"
+    t.string "restaurant_name"
     t.index ["restaurant_id"], name: "index_likes_on_restaurant_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end

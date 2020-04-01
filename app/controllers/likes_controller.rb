@@ -1,38 +1,40 @@
 class LikesController < ApplicationController
+  before_action :require_user_logged_in, only: [:new, :create, :destroy]
   
   def new
-    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    @review = current_user.likes.new
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @like = Like.new
   end
   
   def create
-    @review = current_user.review(review_params)
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    
+    @review = Like.new(
+    restaurant_id: params[:restaurant_id],
+    user_id: current_user.id,
+    review_name: current_user.name,
+    restaurant_name: @restaurant.rest_name,
+    review_title: params[:like][:review_title],
+    review_contents: params[:like][:review_contents],
+    score: params[:like][:score],
+    review_image: params[:like][:review_image]
+    )
+    
     if @review.save
-      flash[:success] = 'レビューを投稿しました'
-      redirect_back(fallback_location: root_path)
+      flash[:success] = 'レビューの投稿に成功しました'
+      redirect_to reviewings_user_path(current_user)
     else
+      
       flash[:danger] = 'レビューの投稿に失敗しました'
-      render :new
+      redirect_back(fallback_location: root_path)
     end
   end
   
   def destroy
-    restaurant = Restaurant.find_by(id: params[:id])
-    current_user.unreview(restaurant)
-    flash[:danger] = 'レビューを削除しました'
-    redirect_back(fallback_location: root_path)
-  end
-  
-  private
-  
-  def review_params #ストロングパラメータの名前はカラム名と一致
-    @review = params.require(:like).permit(:retaurant_id, :review_title, :review_contents, :score, :review_image)
-    if @review == nil
-      flash[:danger] = 'レビュー内容が不足しています'
-      render :new
-    else
-      return @review
-    end
+   @like = Like.find_by(user_id: current_user.id, restaurant_id: params[:restaurant_id])
+   @like.destroy if @like
+   flash[:success] = 'レビューを削除しました'
+   redirect_back(fallback_location: root_path)
   end
 
 end

@@ -27,7 +27,7 @@
             <%= link_to 'このお店にレビューしたUser', reviewers_restaurant_path(restaurant), class: 'ml-2' %>
           </span>
         </div>
-        <%= render 'layouts/follow_button', restaurant: restaurant %>
+        <%= render 'layouts/follow_button', restaurant: restaurant, like: like_finder(restaurant) %>
       </div>
     </div>
     </div>

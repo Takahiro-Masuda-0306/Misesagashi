@@ -23,12 +23,11 @@ class RestaurantsController < ApplicationController
     end
     
     @restaurants = Kaminari.paginate_array(restaurants).page(params[:page]).per(10) #restaurants配列に対してpaginationを作成
-    @user = User.find_by(id: current_user.id)
   end
   
   def reviewers
-    restaurant = Restaurant.find(params[:id])
-    @reviewers = restaurant.reviewers.order(id: :desc).page(params[:page]).per(20)
+    @restaurant = Restaurant.find(params[:id])
+    @reviews = Like.where(restaurant_id: @restaurant.id).order(id: :desc).page(params[:page]).per(20)
   end
   
   private

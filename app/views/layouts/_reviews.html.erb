@@ -1,0 +1,39 @@
+<% reviews.each do |review| %>
+  <div class="row mb-4 review-list">
+    <div class="col-sm-2">
+      <p class="review-name break-style text-center mb-3" style="font-weight: bold;"><%= link_to review.review_name, user_find(review) %></p>
+      <p class="text-center"><%= link_to '削除', restaurant_like_path(rest_find(review)), method: :delete, class: 'btn btn-danger' %></p> 
+    </div>
+    <div class="col-sm-6">
+      <p class="mb-2 break-style">" <span style="font-weight: bold;"><%= link_to review.restaurant_name, rest_url(review) %></span> "へのレビュー</p>
+      <p class="created-at mb-2">created at : <%= review.created_at %></p>
+      <h4 class="review-title mb-2 break-style">評価 : <%= review.score %> 点 | <%= review.review_title %></h4>
+      <div id="star-rate-<%= review.id %>" class="mb-2"></div>
+      <script>
+        $('#star-rate-<%= review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= review.score %>,
+        });
+      </script> 
+      
+      <p class="review-contents break-style mb-2"><%= review.review_contents %></p>
+    </div>
+    <div class="col-sm-4">
+      <div class="review-image"><%= image_tag review.review_image.url if review.review_image? %></div>
+    </div>
+  </div>
+  
+<% end %>
+
+<%= paginate reviews %>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= link_to '戻る', :back, class: 'btn btn-block btn-primary' %>
+  </div>
+</div>

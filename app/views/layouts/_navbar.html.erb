@@ -18,6 +18,7 @@
             <div class="dropdown-menu dropdown-menu-right">
               <%= link_to 'Profile', user_path(current_user), class: 'dropdown-item' %>
               <a class="dropdown-item" href="<%= approvings_user_path(current_user) %>">お気に入り一覧<span class="badge badge-secondary ml-2"><%= count_approvings(current_user) %></span></a>
+              <a class="dropdown-item" href="<%= reviewings_user_path(current_user) %>">レビュー一覧<span class="badge badge-secondary ml-2"><%= count_reviewings(current_user) %></span></a>
               <%= link_to 'ログアウト', logout_path(current_user),method: :delete, class: 'dropdown-item' %>
             </div>
           </li>

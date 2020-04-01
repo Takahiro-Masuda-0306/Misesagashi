@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update, :approvings]
+  before_action :correct_user, only: [:edit, :update]
   before_action :user_existing?, only: [:show, :edit, :update]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(20)
   end
+  
   def show
     @user = User.find_by(id: params[:id])
   end
@@ -51,6 +52,8 @@ class UsersController < ApplicationController
   end
   
   def reviewings
+    @user = User.find(params[:id])
+    @reviews = Like.where(user_id: @user.id).page(params[:page]).per(20)
   end
   
   private
@@ -64,7 +67,9 @@ class UsersController < ApplicationController
   end
   
   def user_existing?
+    @user = User.find_by(id: params[:id])
     unless @user
+      flash[:danger] = 'ユーザーが存在しません'
       redirect_to root_url
     end
   end
