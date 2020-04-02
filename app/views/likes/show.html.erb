@@ -1,0 +1,96 @@
+<div class="text-center mb-5">
+  <h1>" <span style="font-weight: bold;"><%= @review.restaurant_name %></span> "へのレビュー詳細</h1>
+</div>
+
+<div class="review-name text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      投稿者
+    </div>
+    <div class="col-sm-6 break-style">
+      <%= @review.review_name %>
+    </div>
+  </div>
+</div>
+
+<div class="review-time text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      投稿日時
+    </div>
+    <div class="col-sm-6 break-style">
+      <%= @review.created_at %>
+    </div>
+  </div>
+</div>
+
+<div class="review-title text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      タイトル
+    </div>
+    <div class="col-sm-6 break-style">
+      <%= @review.review_title %>
+    </div>
+  </div>
+</div>
+
+<div class="review-score text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      評価
+    </div>
+    <div class="col-sm-6">
+      <p><%= @review.score %></p>
+      <div id="star-rate-<%= @review.id %>" class="mb-2"></div>
+      <script>
+        $('#star-rate-<%= @review.id %>').raty({
+          size: 36,
+          starOff:  '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          half: true,
+          readOnly: true,
+          score: <%= @review.score %>,
+        });
+      </script> 
+    </div>
+  </div>
+</div>
+
+<div class="review-name text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      レビュー内容
+    </div>
+    <div class="col-sm-6 break-style">
+      <%= @review.review_contents %>
+    </div>
+  </div>
+</div>
+
+<div class="review-name text-center mb-5">
+  <div class="row">
+    <div style='font-weight: bold;' class="col-sm-6 mb-2">
+      レビュー画像
+    </div>
+    <div class="col-sm-6">
+      <%= image_tag @review.review_image.url if @review.review_image? %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3 mb-3">
+    <% if current_user == user_find(@review) %>
+      <%= link_to '削除する', restaurant_like_path(rest_find(@review),@review), method: :delete, class: 'btn btn-danger btn-block' %> 
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= link_to '戻る', :back, class: 'btn btn-block btn-primary' %>
+  </div>
+</div>
+  

@@ -30,7 +30,6 @@ $(function() {
   $('.slider').slick({
     autoplay: true,
     autoplaySpeed: 3000,
-    
   });
   
   $('.slider li').on('mouseover', function() {

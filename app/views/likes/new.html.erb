@@ -1,5 +1,11 @@
-<div class="text-center mb-5">
-  <h1>" <%= @restaurant.rest_name %> "のレビュー投稿ページ</h1>
+<div class="text-center mb-4">
+  <h1>"<span style="font-weight: bold;"><%= @restaurant.rest_name %></span> "のレビュー投稿ページ</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 offset-sm-3 mb-4">
+    <%= image_tag @restaurant.rest_image, class: 'review-image' %>
+  </div>
 </div>
 
 <div class="review-form">
@@ -8,14 +14,14 @@
   
   <div class="row">
     <div class="offset-sm-3 col-sm-6 mb-4">
-      <%= f.label :review_title, 'タイトル' %>
+      <%= f.label :review_title, 'タイトル', class: 'bold' %>
       <%= f.text_field :review_title, class: 'form-control', placeholder: 'タイトルは20字以内です' %> 
     </div>
   </div>
   
   <div class="row">
     <div class="offset-sm-3 col-sm-6 mb-4">
-      <%= f.label :score, '評価' %>
+      <%= f.label :score, '評価', class: 'bold' %>
       <%= f.hidden_field :score, id: :rest_rating %> 
       <div id="star-rating"></div>
       <script>
@@ -31,14 +37,14 @@
   
   <div class="row">
     <div class="offset-sm-3 col-sm-6 mb-4">
-      <%= f.label :review_contents, 'レビュー内容' %>
-      <%= f.text_field :review_contents, class: 'form-control', placeholder: 'レビュー内容を300字以内で記述してください' %> 
+      <%= f.label :review_contents, 'レビュー内容', class: 'bold' %>
+      <%= f.text_field :review_contents, class: 'form-control', placeholder: 'レビュー内容を500字以内で記述してください' %> 
     </div>
   </div>
   
   <div class="row">
     <div class="offset-sm-3 col-sm-6 mb-4">
-      <%= f.label :review_image, '画像', class: 'mb-2' %>
+      <%= f.label :review_image, '画像', class: 'bold' %>
       <div>
         <%= f.file_field :review_image %> 
       </div>

@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :toppages, only: [:index, :show]
   
   resources :restaurants, only: [:index] do
-    resources :likes, only: [:new, :create, :destroy]
+    resources :likes, only: [:show, :new, :create, :destroy]
     member do 
       get :followers
       get :reviewers

@@ -1,5 +1,11 @@
 class LikesController < ApplicationController
-  before_action :require_user_logged_in, only: [:new, :create, :destroy]
+  before_action :require_user_logged_in, only: [:show, :new, :create, :destroy]
+  before_action :correct_user, only: [:destroy]
+  before_action :review_existing?, only: [:show, :destroy]
+  
+  def show
+    @review = Like.find(params[:id])
+  end
   
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
@@ -24,17 +30,35 @@ class LikesController < ApplicationController
       flash[:success] = 'レビューの投稿に成功しました'
       redirect_to reviewings_user_path(current_user)
     else
-      
+      @like = Like.new
       flash[:danger] = 'レビューの投稿に失敗しました'
-      redirect_back(fallback_location: root_path)
+      render :new
     end
   end
   
   def destroy
-   @like = Like.find_by(user_id: current_user.id, restaurant_id: params[:restaurant_id])
+   @like = Like.find(params[:id])
    @like.destroy if @like
    flash[:success] = 'レビューを削除しました'
-   redirect_back(fallback_location: root_path)
+   redirect_to reviewings_user_path(current_user)
+  end
+  
+  private
+  
+  def correct_user
+    review = Like.find(params[:id])
+    user = User.find_by(id: review.user_id)
+    unless current_user == user
+      redirect_to root_url
+    end
+  end
+  
+  def review_existing? 
+    review = Like.find_by(id: params[:id])
+    unless review
+      flash[:danger] = '存在しないレビューです'
+      redirect_to root_url
+    end
   end
 
 end

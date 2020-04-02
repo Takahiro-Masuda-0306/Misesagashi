@@ -69,3 +69,14 @@ body {
   border: 2px solid #00ff00;
   padding: 20px 0;
 }
+
+.overflow {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;  
+}
+
+.bold {
+  font-weight: bold;
+}
