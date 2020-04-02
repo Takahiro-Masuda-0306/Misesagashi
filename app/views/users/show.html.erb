@@ -8,32 +8,32 @@
   </div>
   
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">名前 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">名前 : </div>
     <div class="col-sm-3 text-center break-style"><%= @user.name %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">メールアドレス : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">メールアドレス : </div>
     <div class="col-sm-3 text-center break-style"><%= @user.email %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">生年月日 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">生年月日 : </div>
     <div class="col-sm-3 text-center"><%= @user.birth %></div>
   </div>
 
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">紹介文 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">紹介文 : </div>
     <div class="col-sm-3 text-center break-style"><%= @user.contents %></div>
   </div>
   
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">お気に入りしている数 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">お気に入りしている数 : </div>
     <div class="col-sm-3 text-center"><%= count_approvings(@user) %>  <span><%= link_to 'お気に入り一覧を見る', approvings_user_path(@user) %></span></div>
   </div>
   
   <div class="row mb-5">
-    <div class="col-sm-3 offset-sm-3 text-center" style="font-weight: bold;">レビューしている数 : </div>
+    <div class="col-sm-3 offset-sm-3 text-center bold">レビューしている数 : </div>
     <div class="col-sm-3 text-center"><%= count_reviewings(@user) %>  <span><%= link_to 'レビューを見る', reviewings_user_path(@user) %></span></div>
   </div>
 </div>

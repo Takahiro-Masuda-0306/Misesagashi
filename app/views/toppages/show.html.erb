@@ -1,9 +1,54 @@
-<div class="center jumbotron">
-  <div class="text-center mb-4">
-    <p class="mb-3">自分の興味のあるお店をお気に入り登録するだけで、いつでもどこでも閲覧可能！</p>
-    <p>お気に入り登録するには「お気に入り登録」ボタンをクリック！<i class="far fa-thumbs-up"></i></p>
-    <div class="text-center mt-3"><%= image_tag asset_path('favorite_button_inst.png') %></img></div>
+<div class="text-center jumbotron">
+  <h1 class="mb-5">Q & A</h1>
+  
+<div class="panel-group" id="accordion">
+  
+  <div class="panel panel-default mb-3">
+    <div class="panel-heading row">
+      <h4 class="panel-title col-sm-6 offset-sm-3">
+        <button type="button" class="btn btn-block btn-dark mb-2" data-toggle="collapse" data-parent="#accordion" href="#collapse3">「ミセサガシ」の使い方は？</button>
+      </h4>
+    </div>
+    <div id="collapse3" class="panel-collapse collapse in row">
+      <div class="panel-body col-sm-6 offset-sm-3 text-center">
+        <p class="mb-3">自分の気になるお店を検索するサイト。</p>
+        <p class="mb-3">自分だけのお気に入りのお店を見つけよう！</p>
+        <p class="mb-3">新規登録は <%= link_to 'こちら', new_user_path %> から！</p>
+        <p class="mb-3">ログインは <%= link_to 'こちら', login_path %> から！</p>
+      </div>
+    </div>
   </div>
+  
+  <div class="panel panel-default mb-3">
+    <div class="panel-heading row">
+      <h4 class="panel-title col-sm-6 offset-sm-3">
+        <button type="button" class="btn btn-block btn-dark mb-2" data-toggle="collapse" data-parent="#accordion" href="#collapse4">「お気に入り機能」ってなに？</button>
+      </h4>
+    </div>
+    <div id="collapse4" class="panel-collapse collapse row">
+      <div class="panel-body col-sm-6 offset-sm-3 text-center">
+        <p class="mb-3">自分の興味のあるお店をお気に入り登録するだけで、いつでもどこでも閲覧可能！</p>
+        <p class="mb-3">お気に入り登録するには「お気に入り登録」ボタンをクリック！<i class="far fa-thumbs-up"></i></p>
+        <div class="text-center mb-3"><%= image_tag asset_path('favorite_button_inst.png') %></img></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="panel panel-default mb-3">
+    <div class="panel-heading  row">
+      <h4 class="panel-title col-sm-6 offset-sm-3">
+        <button type="button" class="btn btn-block btn-dark mb-2" data-toggle="collapse" data-parent="#accordion" href="#collapse5">「レビュー機能」とは？</button>
+      </h4>
+    </div>
+    <div id="collapse5" class="panel-collapse collapse row">
+      <div class="panel-body col-sm-6 offset-sm-3 text-center">
+        <p class="mb-3">自分が行ったお店を評価しよう！</p>
+        <p class="mb-3">あなたの経験が他の人の役に立つこと間違いなし！</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
   
   <div class="text-center">
     <%= link_to 'さっそく検索する', toppages_index_path, class: 'btn btn-success' %>
