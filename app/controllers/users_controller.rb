@@ -78,6 +78,7 @@ class UsersController < ApplicationController
 	def correct_user
     @user = User.find_by(id: params[:id])
     unless current_user == @user
+      flash[:danger] = '不正なアクセスです'
       redirect_to root_url
     end
 	end

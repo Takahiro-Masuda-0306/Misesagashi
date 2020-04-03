@@ -7,9 +7,10 @@ module UsersHelper
   
   def count_approvings(user) 
 		@count_approvings = user.approvings.count
-	end
+  end
 	
 	def count_reviewings(user)
 	  @count_reviewings = user.reviewings.count
 	end
+	
 end

@@ -1,20 +1,6 @@
 Rails.application.routes.draw do
-  get 'likes/index'
-  get 'likes/create'
-  get 'likes/destroy'
-  get 'favorites/create'
-  get 'favorites/destroy'
-  get 'users/show'
-  get 'users/new'
-  get 'users/create'
-  get 'users/edit'
-  get 'users/update'
-  get 'sessions/new'
-  get 'sessions/create'
-  get 'sessions/destroy'
-  get 'restaurants/index'
-  get 'toppages/index'
-  get 'toppages/show'
+  get 'toppages_show', to: 'toppages#show'
+  
   root to: 'toppages#index'
   resources :toppages, only: [:index, :show]
   
