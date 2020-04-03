@@ -9,10 +9,10 @@
 </div>
 
 <div class="review-form">
-  <%= form_with(model: [@restaurant, @like], url: restaurant_likes_path(@restaurant) , local: true) do |f| %> 
-  <%= render 'layouts/error_messages', model: @like %>
+  <%= form_with(model: [@restaurant, @like], url: restaurant_likes_path(@restaurant, @ilke) , local: true) do |f| %> 
+  <%= render 'layouts/error_messages', model: f.object %>
   
-  <div class="row">
+  <div class="row mt-2">
     <div class="offset-sm-3 col-sm-6 mb-4">
       <%= f.label :review_title, 'タイトル', class: 'bold' %>
       <%= f.text_field :review_title, class: 'form-control', placeholder: 'タイトルは20字以内です' %> 

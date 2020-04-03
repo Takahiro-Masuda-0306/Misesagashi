@@ -15,7 +15,7 @@ class LikesController < ApplicationController
   def create
     @restaurant = Restaurant.find(params[:restaurant_id])
     
-    @review = Like.new(
+    @like = Like.new(
     restaurant_id: params[:restaurant_id],
     user_id: current_user.id,
     review_name: current_user.name,
@@ -26,11 +26,10 @@ class LikesController < ApplicationController
     review_image: params[:like][:review_image]
     )
     
-    if @review.save
+    if @like.save
       flash[:success] = 'レビューの投稿に成功しました'
       redirect_to reviewings_user_path(current_user)
     else
-      @like = Like.new
       flash[:danger] = 'レビューの投稿に失敗しました'
       render :new
     end
